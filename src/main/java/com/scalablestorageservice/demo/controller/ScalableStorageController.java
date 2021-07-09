@@ -1,6 +1,6 @@
-package com.mq.demo.s3.controller;
+package com.scalablestorageservice.demo.controller;
 
-import com.mq.demo.s3.service.ScalableStorageService;
+import com.scalablestorageservice.demo.service.ScalableStorageService;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;

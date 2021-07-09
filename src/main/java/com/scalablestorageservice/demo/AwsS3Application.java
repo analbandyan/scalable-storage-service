@@ -1,4 +1,4 @@
-package com.mq.demo.s3;
+package com.scalablestorageservice.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

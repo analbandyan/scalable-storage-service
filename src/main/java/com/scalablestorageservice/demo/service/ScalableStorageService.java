@@ -1,4 +1,4 @@
-package com.mq.demo.s3.service;
+package com.scalablestorageservice.demo.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

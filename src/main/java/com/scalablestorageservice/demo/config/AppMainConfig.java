@@ -1,4 +1,4 @@
-package com.mq.demo.s3.config;
+package com.scalablestorageservice.demo.config;
 
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.regions.Regions;

@@ -1,4 +1,4 @@
-package com.mq.demo.s3.service;
+package com.scalablestorageservice.demo.service;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
@@ -14,7 +14,6 @@ import java.io.InputStream;
 public class AwsS3MqWrapperService {
 
     private final static String BUCKET_NAME = "mq-demo-bucket";
-
 
     private final AmazonS3 amazonS3;
     private final TransferManager transferManager;
