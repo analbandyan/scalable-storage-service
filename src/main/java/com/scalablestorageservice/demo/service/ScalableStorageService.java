@@ -1,25 +1,14 @@
 package com.scalablestorageservice.demo.service;
 
-import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.InputStream;
+public interface ScalableStorageService {
 
-@Service
-public class ScalableStorageService {
+    String upload(MultipartFile file);
 
-    private final AwsS3MqWrapperService awsS3MqWrapperService;
+    DownloadableFileData download(String key);
 
-    public ScalableStorageService(AwsS3MqWrapperService awsS3MqWrapperService) {
-        this.awsS3MqWrapperService = awsS3MqWrapperService;
-    }
-
-    public void upload(String id, MultipartFile file) {
-        awsS3MqWrapperService.upload(id, file);
-    }
-
-    public InputStream download(String id) {
-        return awsS3MqWrapperService.download(id);
-    }
+    void delete(String key);
 
 }
+
