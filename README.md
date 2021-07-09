@@ -1,3 +1,3 @@
 # Scalable Storage Service
 
-This is a simple scalable storage service with RESTful API delegating and storing the files into Amazon S3.
+This is a simple scalable storage service implemented with Spring Boot and AWS S3.
