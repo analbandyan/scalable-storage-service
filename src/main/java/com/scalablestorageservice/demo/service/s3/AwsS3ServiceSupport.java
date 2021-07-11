@@ -30,9 +30,9 @@ public class AwsS3ServiceSupport {
         return s3Object.getObjectMetadata().getUserMetaDataOf(FILE_ORIGINAL_NAME);
     }
 
-    public static void doWithInputStream(MultipartFile file, Consumer<InputStream> isConsumer) {
+    public static void doWithInputStream(MultipartFile file, Consumer<InputStream> inputStreamConsumer) {
         try (InputStream inputStream = file.getInputStream()) {
-            isConsumer.accept(inputStream);
+            inputStreamConsumer.accept(inputStream);
         } catch (IOException e) {
             throw new RuntimeException("Failed to get uploading file input stream", e);
         }
