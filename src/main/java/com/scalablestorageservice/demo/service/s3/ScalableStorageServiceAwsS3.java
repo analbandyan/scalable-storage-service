@@ -1,13 +1,19 @@
 package com.scalablestorageservice.demo.service.s3;
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.transfer.TransferManager;
+import com.amazonaws.services.s3.transfer.Upload;
 import com.scalablestorageservice.demo.service.DownloadableFileData;
 import com.scalablestorageservice.demo.service.ScalableStorageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.function.Consumer;
 
 import static com.scalablestorageservice.demo.service.s3.AwsS3ServiceSupport.*;
 
@@ -42,8 +48,18 @@ public class ScalableStorageServiceAwsS3 implements ScalableStorageService {
 
     private String doUpload(MultipartFile file) {
         String objectKey = generateObjectKey();
-        transferManager.upload(BUCKET_NAME, objectKey, getInputStream(file), constructObjectMetadata(file));
+        doWithInputStream(
+                file,
+                transferFile(objectKey, constructObjectMetadata(file))
+        );
         return objectKey;
+    }
+
+    private Consumer<InputStream> transferFile(String key, ObjectMetadata objectMetadata) {
+        return inputStream -> {
+            final Upload uploadTask = transferManager.upload(BUCKET_NAME, key, inputStream, objectMetadata);
+            waitForUpload(uploadTask);
+        };
     }
 
     @Override
